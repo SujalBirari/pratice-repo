@@ -2,6 +2,30 @@ import functools
 import random
 import time
 
+
+'''
+Problem Statement: The @retry Decorator
+In real-world applications, operations like network requests, database queries, or file downloads can fail temporarily due to glitches.
+
+Your task is to write a custom decorator named @retry that automatically retries a failing function before finally giving up.
+
+Requirements:
+
+The decorator must accept three arguments:
+
+max_retries (int): The maximum number of times to retry the function.
+
+delay (int or float): The number of seconds to wait between retries (you can use time.sleep()).
+
+exceptions (tuple): A tuple of exception classes that should trigger a retry. If a different exception is raised, it should not be caught and should fail immediately.
+
+If the function executes successfully, return its result.
+
+If the function raises one of the specified exceptions, it should wait for delay seconds, print a warning message (e.g., "Retrying in {delay} seconds..."), and try again.
+
+If the function fails max_retries times, it should raise the very last exception it encountered.
+'''
+
 # LAYER 1: The Decorator Factory
 # This takes your configuration arguments.
 def retry(max_retries, delay, exceptions):
